@@ -6,26 +6,30 @@ export default function ClassicTemplate({ cvData, profileImage }) {
   return (
     <div className="a4-page">
       {/* Header */}
-      <div style={{ textAlign: 'center', borderBottom: '3px solid #1f2937', paddingBottom: '25px', marginBottom: '30px' }}>
-        {profileImage && (
-          <img 
-            src={profileImage} 
-            alt="Profile" 
-            style={{ 
-              width: '100px', 
-              height: '100px', 
-              borderRadius: '50%', 
-              objectFit: 'cover',
-              border: '3px solid #1f2937',
-              marginBottom: '15px'
-            }} 
-          />
-        )}
-        <h1 style={{ fontSize: '2.5em', marginBottom: '8px', fontWeight: '700', color: '#1f2937' }}>
-          {cvData.personal.name || 'Your Name'}
-        </h1>
-        <div style={{ fontSize: '1.2em', color: '#4b5563', marginBottom: '15px', fontWeight: '500' }}>
-          {cvData.personal.title || 'Professional Title'}
+      <div style={{ borderBottom: '3px solid #1f2937', paddingBottom: '25px', marginBottom: '30px', pageBreakInside: 'avoid' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '15px' }}>
+          {profileImage && (
+            <img 
+              src={profileImage} 
+              alt="Profile" 
+              style={{ 
+                width: '100px', 
+                height: '100px', 
+                borderRadius: '50%', 
+                objectFit: 'cover',
+                border: '3px solid #1f2937',
+                flexShrink: 0
+              }} 
+            />
+          )}
+          <div style={{ flex: 1 }}>
+            <h1 style={{ fontSize: '2.5em', marginBottom: '8px', fontWeight: '700', color: '#1f2937' }}>
+              {cvData.personal.name || 'Your Name'}
+            </h1>
+            <div style={{ fontSize: '1.2em', color: '#4b5563', fontWeight: '500' }}>
+              {cvData.personal.title || 'Professional Title'}
+            </div>
+          </div>
         </div>
         
         <div style={{ display: 'flex', justifyContent: 'center', gap: '15px', marginTop: '15px', fontSize: '0.9em', color: '#6b7280', flexWrap: 'wrap' }}>
@@ -65,7 +69,7 @@ export default function ClassicTemplate({ cvData, profileImage }) {
 
       {/* Summary */}
       {cvData.personal.summary && (
-        <div style={{ marginBottom: '30px' }}>
+        <div style={{ marginBottom: '30px', pageBreakInside: 'avoid' }}>
           <h2 style={{ fontSize: '1.3em', color: '#1f2937', marginBottom: '12px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
             Professional Summary
           </h2>
@@ -83,7 +87,7 @@ export default function ClassicTemplate({ cvData, profileImage }) {
             Work Experience
           </h2>
           {cvData.experience.map((exp, i) => (
-            <div key={exp.id || i} style={{ marginBottom: '20px' }}>
+            <div key={exp.id || i} style={{ marginBottom: '20px', pageBreakInside: 'avoid' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
                 <div style={{ fontWeight: '700', fontSize: '1.05em', color: '#1f2937' }}>
                   {exp.title || 'Position Title'}
@@ -113,7 +117,7 @@ export default function ClassicTemplate({ cvData, profileImage }) {
             Education
           </h2>
           {cvData.education.map((edu, i) => (
-            <div key={edu.id || i} style={{ marginBottom: '20px' }}>
+            <div key={edu.id || i} style={{ marginBottom: '20px', pageBreakInside: 'avoid' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
                 <div style={{ fontWeight: '700', fontSize: '1.05em', color: '#1f2937' }}>
                   {edu.degree || 'Degree'}
@@ -139,7 +143,7 @@ export default function ClassicTemplate({ cvData, profileImage }) {
 
       {/* Skills */}
       {cvData.skills && cvData.skills.length > 0 && (
-        <div style={{ marginBottom: '30px' }}>
+        <div style={{ marginBottom: '30px', pageBreakInside: 'avoid' }}>
           <h2 style={{ fontSize: '1.3em', color: '#1f2937', marginBottom: '15px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
             Skills
           </h2>
@@ -162,7 +166,7 @@ export default function ClassicTemplate({ cvData, profileImage }) {
 
       {/* Custom Sections */}
       {cvData.customSections && cvData.customSections.map((section, idx) => (
-        <div key={section.id || idx} style={{ marginBottom: '30px' }}>
+        <div key={section.id || idx} style={{ marginBottom: '30px', pageBreakInside: 'avoid' }}>
           <h2 style={{ fontSize: '1.3em', color: '#1f2937', marginBottom: '15px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
             {section.title || 'Custom Section'}
           </h2>

@@ -16,47 +16,52 @@ body {
 
 @layer utilities {
   .scrollbar-thin::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
+    height: 6px;
   }
   
   .scrollbar-thin::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 10px;
+    background: transparent;
   }
   
   .scrollbar-thin::-webkit-scrollbar-thumb {
-    background: #c1c1c1;
-    border-radius: 10px;
+    background: #d1d5db;
+    border-radius: 3px;
   }
   
   .scrollbar-thin::-webkit-scrollbar-thumb:hover {
-    background: #a8a8a8;
+    background: #9ca3af;
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #d1d5db transparent;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply flex items-center gap-2 px-5 py-2.5 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-all duration-200 font-medium;
+    @apply inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 transition-colors;
   }
   
   .btn-secondary {
-    @apply flex items-center gap-2 px-5 py-2.5 bg-white text-gray-700 rounded-lg hover:bg-gray-50 transition-all duration-200 font-medium border border-gray-300;
+    @apply inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors;
   }
   
   .btn-success {
-    @apply flex items-center gap-2 px-5 py-2.5 bg-gray-700 text-white rounded-lg hover:bg-gray-800 transition-all duration-200 font-medium;
+    @apply inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg hover:bg-gray-800 transition-colors;
   }
   
   .input-field {
-    @apply w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 outline-none;
+    @apply w-full px-3 py-1.5 text-xs border border-gray-300 rounded-md focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-colors;
   }
   
   .card {
-    @apply bg-white rounded-2xl shadow-soft hover:shadow-medium transition-shadow duration-300;
+    @apply bg-white rounded-lg border border-gray-200 hover:border-gray-300 transition-colors;
   }
   
   .section-title {
-    @apply text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2;
+    @apply text-base font-semibold text-gray-900 mb-3 flex items-center gap-2;
   }
 }
 
@@ -70,7 +75,7 @@ body {
   box-sizing: border-box;
   position: relative;
   page-break-after: always;
-  overflow: hidden;
+  overflow: visible;
   border: 1px solid #e5e7eb;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   word-wrap: break-word;
@@ -81,6 +86,19 @@ body {
   max-width: 100%;
   word-wrap: break-word;
   overflow-wrap: break-word;
+}
+
+/* Prevent content from breaking across pages */
+.a4-page h1,
+.a4-page h2,
+.a4-page h3 {
+  page-break-after: avoid;
+  break-after: avoid;
+}
+
+.a4-page div[style*="marginBottom"] {
+  page-break-inside: avoid;
+  break-inside: avoid;
 }
 
 @media print {
@@ -104,23 +122,42 @@ body {
 /* Quill Editor Styles */
 .ql-container {
   font-family: inherit !important;
-  border-bottom-left-radius: 0.75rem;
-  border-bottom-right-radius: 0.75rem;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  border-color: #d1d5db;
 }
 
 .ql-toolbar {
-  border-top-left-radius: 0.75rem;
-  border-top-right-radius: 0.75rem;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  border-color: #d1d5db;
+  background: #f9fafb;
 }
 
 .ql-editor {
-  min-height: 120px;
-  font-size: 0.95rem;
+  min-height: 100px;
+  font-size: 0.875rem;
 }
 
 .ql-editor.ql-blank::before {
   font-style: normal;
   color: #9ca3af;
+}
+
+.ql-toolbar .ql-stroke {
+  stroke: #6b7280;
+}
+
+.ql-toolbar .ql-fill {
+  fill: #6b7280;
+}
+
+.ql-toolbar button:hover .ql-stroke {
+  stroke: #111827;
+}
+
+.ql-toolbar button:hover .ql-fill {
+  fill: #111827;
 }
 
 /* Dark mode Quill */

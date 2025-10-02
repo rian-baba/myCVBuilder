@@ -12,44 +12,40 @@ export default function OtherSectionsForm({ sections, addSection, removeSection,
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4">
       <div className="flex items-center justify-between">
         <div>
-          <h3 className={`text-lg font-semibold ${darkMode ? 'text-white' : 'text-gray-800'}`}>
+          <h3 className="text-sm font-semibold text-gray-900">
             Custom Sections
           </h3>
-          <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+          <p className="text-xs text-gray-600">
             Add projects, certifications, awards, volunteer work, etc.
           </p>
         </div>
         <button
           onClick={addSection}
-          className="btn-primary flex items-center gap-2"
+          className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 transition-colors"
         >
-          <Plus size={18} /> Add Section
+          <Plus size={16} /> Add Section
         </button>
       </div>
 
       {sections.length === 0 ? (
-        <div className={`text-center py-12 border-2 border-dashed rounded-xl ${
-          darkMode ? 'border-gray-700 bg-gray-800/50' : 'border-gray-300 bg-gray-50'
-        }`}>
-          <Award size={48} className={`mx-auto mb-4 ${darkMode ? 'text-gray-600' : 'text-gray-400'}`} />
-          <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+        <div className="text-center py-12 border-2 border-dashed border-gray-300 rounded-lg bg-gray-50">
+          <Award size={48} className="mx-auto mb-4 text-gray-400" />
+          <p className="text-sm text-gray-600">
             No custom sections yet. Add projects, certifications, or achievements!
           </p>
         </div>
       ) : (
-        <div className="space-y-6">
+        <div className="space-y-4">
           {sections.map((section, index) => (
             <div
               key={section.id}
-              className={`p-6 rounded-xl border-2 ${
-                darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'
-              }`}
+              className="p-5 rounded-lg border border-gray-200 bg-gray-50"
             >
               <div className="flex items-start justify-between mb-4">
-                <h4 className={`font-semibold ${darkMode ? 'text-white' : 'text-gray-800'}`}>
+                <h4 className="text-sm font-semibold text-gray-900">
                   Section {index + 1}
                 </h4>
                 <button
@@ -64,7 +60,7 @@ export default function OtherSectionsForm({ sections, addSection, removeSection,
               <div className="space-y-4">
                 {/* Section Title */}
                 <div>
-                  <label className={`block text-sm font-medium mb-2 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
                     Section Title *
                   </label>
                   <input
@@ -72,29 +68,26 @@ export default function OtherSectionsForm({ sections, addSection, removeSection,
                     value={section.title || ''}
                     onChange={(e) => updateSection(section.id, 'title', e.target.value)}
                     placeholder="e.g., Projects, Certifications, Awards, Volunteer Work"
-                    className={`input-field ${darkMode ? 'bg-gray-700 border-gray-600 text-white' : ''}`}
+                    className="input-field"
                   />
-                  <p className={`text-xs mt-1 ${darkMode ? 'text-gray-500' : 'text-gray-500'}`}>
+                  <p className="text-xs mt-1 text-gray-500">
                     Examples: Projects, Certifications, Awards, Publications, Volunteer Work, Languages, Hobbies
                   </p>
                 </div>
 
                 {/* Section Content */}
                 <div>
-                  <label className={`block text-sm font-medium mb-2 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
                     Content *
                   </label>
-                  <div className={darkMode ? 'quill-dark' : ''}>
-                    <ReactQuill
-                      theme="snow"
-                      value={section.content || ''}
-                      onChange={(value) => updateSection(section.id, 'content', value)}
-                      modules={modules}
-                      placeholder="Add details about this section..."
-                      className={`${darkMode ? 'bg-gray-700 text-white rounded-lg' : 'bg-white'}`}
-                    />
-                  </div>
-                  <p className={`text-xs mt-2 ${darkMode ? 'text-gray-500' : 'text-gray-500'}`}>
+                  <ReactQuill
+                    theme="snow"
+                    value={section.content || ''}
+                    onChange={(value) => updateSection(section.id, 'content', value)}
+                    modules={modules}
+                    placeholder="Add details about this section..."
+                  />
+                  <p className="text-xs mt-2 text-gray-500">
                     💡 Tip: Use bullet points for better readability
                   </p>
                 </div>
@@ -105,11 +98,11 @@ export default function OtherSectionsForm({ sections, addSection, removeSection,
       )}
 
       {/* Quick Examples */}
-      <div className={`p-4 rounded-lg ${darkMode ? 'bg-gray-800 border border-gray-700' : 'bg-blue-50 border border-blue-200'}`}>
-        <h4 className={`text-sm font-semibold mb-2 ${darkMode ? 'text-blue-400' : 'text-blue-800'}`}>
+      <div className="p-4 rounded-lg bg-blue-50 border border-blue-200">
+        <h4 className="text-sm font-semibold mb-2 text-blue-800">
           💡 Section Ideas:
         </h4>
-        <div className={`text-xs space-y-1 ${darkMode ? 'text-gray-400' : 'text-blue-700'}`}>
+        <div className="text-xs space-y-1 text-blue-700">
           <p>• <strong>Projects:</strong> Personal or professional projects with descriptions</p>
           <p>• <strong>Certifications:</strong> Professional certifications and licenses</p>
           <p>• <strong>Awards:</strong> Recognition and achievements</p>
